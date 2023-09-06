@@ -35,7 +35,7 @@ const initialState = {
   });
   
   
-  export const { addNewTask } = todoSlice.actions;
+  export const { addNewTask, onDelete, onFinished } = todoSlice.actions;
 
   export default todoSlice.reducer;
   

@@ -18,8 +18,6 @@ function App() {
           return <NewTask task={task} />
         })}
       </div>
-      
-      {isOpen ? 'true' : 'false'}
     </div>
   );
 }

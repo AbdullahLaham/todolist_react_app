@@ -17,8 +17,9 @@ const Modal = () => {
   });
   
   const handleSubmit = () => {
-    dispatch(addNewTask(newTask));
-    if (newTask?.title) {
+    
+    if (newTask?.title ) {
+      dispatch(addNewTask(newTask));
       setShowModal(false);
       setNewTask({
         id: Math.random() * 100,
