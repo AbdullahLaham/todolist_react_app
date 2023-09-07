@@ -3,6 +3,10 @@ import { useDispatch, useSelector } from 'react-redux'
 import {onClose} from '../featuers/ModalReducer/modalSlice';
 import {IoMdClose} from 'react-icons/io'
 import { addNewTask } from '../featuers/ToDoListReducer/todoSlice';
+import DateTimePicker from 'react-datetime-picker';
+import 'react-datetime-picker/dist/DateTimePicker.css';
+import 'react-calendar/dist/Calendar.css';
+import 'react-clock/dist/Clock.css';
 const Modal = () => {
 
   const {isOpen} = useSelector((state) => state?.modal);
@@ -12,6 +16,7 @@ const Modal = () => {
 
   const [newTask, setNewTask] = useState({
     id: Math.random() * 100,
+    date: new Date(),
     title: '',
     isDone: false,
   });
@@ -77,6 +82,7 @@ const Modal = () => {
               {/* Body */}
               <div className="relative p-6 flex-auto">
                 <input type='text' className='p-5 border-2 w-full text-xl ' value={newTask.title} onChange={(e) => setNewTask({...newTask, title: e.target.value})} />
+                <DateTimePicker value={newTask.date} onChange={(val) => setNewTask({...newTask, date: val})} className={'border-none outline-none mt-7'}  />
               </div>
               
               {/*footer*/}

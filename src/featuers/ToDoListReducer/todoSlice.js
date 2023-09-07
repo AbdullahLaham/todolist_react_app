@@ -5,7 +5,9 @@ const initialState = {
       id: Math.random() * 100,
       title: 'Finishing to do list app',
       isDone: false,
+      date: new Date(),
     }],
+    
 
  }
 
