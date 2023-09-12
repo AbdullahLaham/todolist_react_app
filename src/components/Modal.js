@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import {onClose} from '../featuers/ModalReducer/modalSlice';
+import {onClose} from '../store/ModalReducer/modalSlice';
 import {IoMdClose} from 'react-icons/io'
-import { addNewTask } from '../featuers/ToDoListReducer/todoSlice';
+import { addNewTask, createTodoList } from '../store/ToDoListReducer/todoSlice';
 import DateTimePicker from 'react-datetime-picker';
 import 'react-datetime-picker/dist/DateTimePicker.css';
 import 'react-calendar/dist/Calendar.css';
@@ -24,7 +24,7 @@ const Modal = () => {
   const handleSubmit = () => {
     
     if (newTask?.title ) {
-      dispatch(addNewTask(newTask));
+      dispatch(createTodoList(newTask));
       setShowModal(false);
       setNewTask({
         id: Math.random() * 100,

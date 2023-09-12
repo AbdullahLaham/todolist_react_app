@@ -1,13 +1,20 @@
 import logo from './logo.svg';
 import './App.css';
 import Header from './components/Header';
-import { useSelector } from 'react-redux';
-import NewTask from './components/NewTask';
+import { useDispatch, useSelector } from 'react-redux';
 import Modal from './components/Modal';
-
+import {createTodoList, getAllTasks} from './store/ToDoListReducer/todoSlice';
+import { useEffect } from 'react';
+import NewTask from './components/NewTask';
 function App() {
   const {isOpen} = useSelector((state) => state?.modal);
-  const {tasks} = useSelector((state) => state?.todo);
+  const {tasks, updatedTodoList, deletedTodoList, newTodoList} = useSelector((state) => state?.todo);
+  const dispatch = useDispatch();
+  
+  useEffect(() => {
+    dispatch(getAllTasks());
+  }, [updatedTodoList, deletedTodoList, newTodoList]);
+
   return (
     <div className="">
       <Header />
