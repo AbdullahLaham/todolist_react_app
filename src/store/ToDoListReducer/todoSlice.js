@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import todoService from './todoService';
+import toast from 'react-hot-toast';
 
 const initialState = { 
     tasks: localStorage.getItem('tasks') ? JSON.parse(localStorage.getItem('tasks')): [],
@@ -91,6 +92,7 @@ export const createTodoList = createAsyncThunk('task/create-task', async (data, 
           state.isLoading = false ;
           state.isError = false;
           state.isSuccess = true;
+          
           state.tasks = action?.payload;
       })
 
@@ -121,6 +123,7 @@ export const createTodoList = createAsyncThunk('task/create-task', async (data, 
           state.isLoading = false ;
           state.isError = false;
           state.isSuccess = true;
+          if (state?.isSuccess) toast.success("Task Deleted Successfully")
           state.deletedTodoList = action?.payload;
       })
 
@@ -128,6 +131,7 @@ export const createTodoList = createAsyncThunk('task/create-task', async (data, 
           state.isLoading = false ;
           state.isError = true;
           state.isSuccess = false;
+          if (state?.isError) toast.success("something went wrong")
           state.deletedTodoList = null;
       })
 
@@ -137,6 +141,7 @@ export const createTodoList = createAsyncThunk('task/create-task', async (data, 
           state.isLoading = false ;
           state.isError = false;
           state.isSuccess = true;
+          if (state?.isSuccess) toast.success("New task created Successfully")
           state.newTodoList = action?.payload;
       })
 
@@ -144,6 +149,7 @@ export const createTodoList = createAsyncThunk('task/create-task', async (data, 
           state.isLoading = false ;
           state.isError = true;
           state.isSuccess = false;
+          if (state?.isError) toast.success("something went wrong")
           state.newTodoList = null;
       })
       },

@@ -6,6 +6,9 @@ import Modal from './components/Modal';
 import {createTodoList, getAllTasks} from './store/ToDoListReducer/todoSlice';
 import { useEffect } from 'react';
 import NewTask from './components/NewTask';
+import { Toaster } from 'react-hot-toast';
+
+
 function App() {
   const {isOpen} = useSelector((state) => state?.modal);
   const {tasks, updatedTodoList, deletedTodoList, newTodoList} = useSelector((state) => state?.todo);
@@ -17,6 +20,7 @@ function App() {
 
   return (
     <div className="">
+      <Toaster />
       <Header />
       <Modal />
       {/* tasks container */}
