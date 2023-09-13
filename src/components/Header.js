@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import {AiOutlinePlus} from 'react-icons/ai'
-import { onOpen, onClose } from '../featuers/ModalReducer/modalSlice';
+import { onOpen, onClose } from '../store/ModalReducer/modalSlice';
 const Header = () => {
   const dispatch = useDispatch();
   return (
